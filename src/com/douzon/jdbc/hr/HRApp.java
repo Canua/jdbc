@@ -10,16 +10,16 @@ public class HRApp {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("사원 이름을 입력하시오 :");
-		String no = scanner.next();
-		scanner.close();
-		search(no);
-	}
 
-	private static void search(String no) {
-		List<EmployeeVo> list = new EmployeeDao().getList();
+		System.out.print("검색어>>");
+		String keyword = scanner.nextLine();
+
+		List<EmployeeVo> list = new EmployeeDao().getList(keyword);
 		for (EmployeeVo vo : list) {
-			System.out.println(vo);
+			System.out.println(
+					"[" + vo.getEmp_no() + "]" + vo.getFirst_name() + " " + vo.getFirst_name() + " " + vo.getHire_date());
 		}
+
+		scanner.close();
 	}
 }
